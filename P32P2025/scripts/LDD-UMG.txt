@@ -1,0 +1,204 @@
+CREATE TABLE facultades(
+    codigo_facultad VARCHAR(5),
+    nombre_facultad VARCHAR(45),
+    estatus_carrera VARCHAR(1),
+    PRIMARY KEY (codigo_facultad))
+    ENGINE=InnoDB CHARACTER SET = latin1; 
+
+INSERT INTO facultades
+(codigo_facultad, nombre_facultad, estatus_facultad)
+VALUES 
+("00001","Facultad Ingenieria en Sist. y C.C.","1");
+
+------------------------------------------------------------------
+
+CREATE TABLE carreras(
+    codigo_carrera VARCHAR(5),
+    nombre_carrera VARCHAR(5),
+    codigo_carrera VARCHAR(5),
+    estatus_carrera VARCHAR(5),
+    PRIMARY KEY (codigo_carrera), 
+    FOREIGN KEY (codigo_facultad) REFERENCES facultades(codigo_facultad))
+    ENGINE=InnoDB CHARACTER SET = latin1;  
+
+INSERT INTO carreras (codigo_carrera, nombre_carrera, codigo_facultad, estatus_carrera) 
+VALUES ("00901","Ingenieria en Sist. y C.C.","00001","1"), 
+("09959","Ingenieria en Sist. y C.C.","00001","1"), 
+("09545","Seguridad informatica","00001","1"), 
+("00805","Analisis y desarrollo software","00001","1"), 
+("10456","Administracion de redes","00001","1");
+
+--------------------------------------------------------------------
+
+CREATE TABLE cursos(
+    codigo_curso VARCHAR(5),
+    nombre_curso VARCHAR(45),
+    estatus_curso VARCHAR(1),
+    PRIMARY KEY (codigo_curso))
+    ENGINE=InnoDB CHARACTER SET = latin1; 
+
+INSERT INTO cursos
+(codigo_curso, nombre_curso, estatus_curso)
+VALUES 
+("00021","Metodos Numericos","1"),("00022","Programacion III","1"),
+("00023","Emprendimiento","1"),("00024","Electronica","1"),
+("00025","Estadistica II","1");
+
+--------------------------------------------------------------------
+
+CREATE TABLE jornadas(
+    codigo_jornada VARCHAR(5),
+    nombre_jornada VARCHAR(45),
+    estatus_jornada VARCHAR(1),
+    PRIMARY KEY (codigo_jornada))
+    ENGINE=InnoDB CHARACTER SET = latin1; 
+
+INSERT INTO jornadas
+(codigo_jornada, nombre_jornada, estatus_jornada)
+VALUES 
+("10010","Matutina","1"),("10012","Vespertina","1"),
+("10013","Fin de Semana","1");
+
+--------------------------------------------------------------------
+
+CREATE TABLE aulas(
+    codigo_aula VARCHAR(5),
+    nombre_aula VARCHAR(45),
+    estatus_aula VARCHAR(1),
+    PRIMARY KEY (codigo_aula))
+    ENGINE=InnoDB CHARACTER SET = latin1; 
+
+INSERT INTO aulas
+(codigo_aula, nombre_aula, estatus_aula)
+VALUES 
+("02001","C001","1"),("02002","C002","1"),
+("02003","C003","1"),("02004","C004","1"),
+("02005","C005","1");
+--------------------------------------------------------------------
+
+CREATE TABLE secciones(
+    codigo_seccion VARCHAR(5),
+    nombre_seccion VARCHAR(45),
+    estatus_seccion VARCHAR(1),
+    PRIMARY KEY (codigo_seccion))
+    ENGINE=InnoDB CHARACTER SET = latin1;
+ 
+INSERT INTO secciones
+(codigo_seccion, nombre_seccion, estatus_seccion)
+VALUES 
+("03001","A","1"),("03002","B","1"),
+("03003","C","1"),("03004","D","1"),
+("03005","E","1");
+
+--------------------------------------------------------------------
+
+CREATE TABLE sedes(
+    codigo_sede VARCHAR(5),
+    nombre_sede VARCHAR(45),
+    estatus_sede VARCHAR(1),
+    PRIMARY KEY (codigo_sede))
+    ENGINE=InnoDB CHARACTER SET = latin1; 
+
+INSERT INTO sedes
+(codigo_sede, nombre_sede, estatus_sede)
+VALUES 
+("01011","Portales","1"),("01012","Naranjo","1"),
+("01013","La Florida","1"),("01014","Boca del Monte","1"),
+("01015","Santa Rosita","1");
+
+--------------------------------------------------------------------
+
+CREATE TABLE alumnos(
+    carnet_alumno VARCHAR(5),
+    nombre_alumno VARCHAR(45),
+    direccion_alumno VARCHAR(45),
+    telefono_alumno VARCHAR(45),
+    email_alumno VARCHAR(20),
+    estatus_alumno VARCHAR(1),
+    PRIMARY KEY (carnet_alumno))
+    ENGINE=InnoDB CHARACTER SET = latin1; 
+
+INSERT INTO alumnos
+(carnet_alumno, nombre_alumno, direccion_alumno, telefono_alumno, email_alumno, estatus_alumno)
+VALUES 
+("00736","Pablo Palencia","Zona 6","57235258","ppr1@gmail.com","1"),("03070","Oscar Morales","Zona 10","45874521","oscm@gmail.com","1"),
+("08246","Kathia Contreras","Zona 6","32623015","katsy@gmail.com","1"),("03117","Andre Gonzalez","Zona 18","75485689","andj@gmail.com","1"),
+("07225","Alisson Lopez","Zona 21","21456545","aliss@gmail.com","1");
+
+--------------------------------------------------------------------
+
+CREATE TABLE maestros(
+    codigo_maestro VARCHAR(5),
+    nombre_maestro VARCHAR(45),
+    direccion_maestro VARCHAR(45),
+    telefono_maestro VARCHAR(45),
+    email_maestro VARCHAR(20),
+    estatus_maestro VARCHAR(1),
+    PRIMARY KEY (codigo_maestro))
+    ENGINE=InnoDB CHARACTER SET = latin1; 
+
+INSERT INTO maestros
+(codigo_maestro, nombre_maestro, direccion_maestro, telefono_maestro, email_maestro, estatus_maestro)
+VALUES 
+("01836","Angela Ortiz","Zona 18","45122565","ange@gmail.com","1"),("01470","Roberto Caceros","Zona 7","36566356","roberto@gmail.com","1"),
+("04644","Vivian Arevalo","Zona 21","32645715","vvar@gmail.com","1"),("02219","Fransisco Perez","Zona 18","49655689","ffran@gmail.com","1"),
+("03245","Miguel Duarte","Zona 9","35364545","migd@gmail.com","1");
+
+--------------------------------------------------------------------
+
+CREATE TABLE asignacioncursosalumnos(
+    codigo_carrera VARCHAR(5),
+    codigo_sede VARCHAR(5),
+    codigo_jornada VARCHAR(5),
+    codigo_seccion VARCHAR(5),
+    codigo_aula VARCHAR(5),
+    codigo_curso VARCHAR(5),
+    carnet_alumno VARCHAR(5),
+    nota_asignacioncursoalumnos FLOAT(10,2),
+    
+    PRIMARY KEY (codigo_carrera,codigo_sede,codigo_jornada,codigo_seccion,
+    codigo_aula,codigo_curso,carnet_alumno),
+
+    FOREIGN KEY (codigo_carrera) REFERENCES carreras(codigo_carrera),
+    FOREIGN KEY (codigo_sede) REFERENCES sedes(codigo_sede),
+    FOREIGN KEY (codigo_jornada) REFERENCES jornadas(codigo_jornada),
+    FOREIGN KEY (codigo_seccion) REFERENCES secciones(codigo_seccion),
+    FOREIGN KEY (codigo_aula) REFERENCES aulas(codigo_aula),
+    FOREIGN KEY (codigo_curso) REFERENCES cursos(codigo_curso),
+    FOREIGN KEY (carnet_alumno) REFERENCES alumnos(carnet_alumno))
+    ENGINE=InnoDB CHARACTER SET = latin1;  
+
+INSERT INTO asignacioncursosalumnos
+(codigo_carrera, codigo_sede, codigo_jornada, codigo_seccion, codigo_aula, codigo_curso, carnet_alumno, nota_asignacioncursoalumnos)
+VALUES 
+("09959","01011","10010","03001","02005","00022","00736","92"),("00805","01012","10013","03004","02002","00021","03070","88"),
+("09545","01013","10012","03002","02001","00025","08246","75");
+
+--------------------------------------------------------------------
+
+CREATE TABLE asignacioncursosmaestros(
+    codigo_carrera VARCHAR(5),
+    codigo_sede VARCHAR(5),
+    codigo_jornada VARCHAR(5),
+    codigo_seccion VARCHAR(5),
+    codigo_aula VARCHAR(5),
+    codigo_curso VARCHAR(5),
+    codigo_maestro VARCHAR(5),
+
+    PRIMARY KEY (codigo_carrera,codigo_sede,codigo_jornada,codigo_seccion,
+    codigo_aula,codigo_curso),
+
+    FOREIGN KEY (codigo_carrera) REFERENCES carreras(codigo_carrera),
+    FOREIGN KEY (codigo_sede) REFERENCES sedes(codigo_sede),
+    FOREIGN KEY (codigo_jornada) REFERENCES jornadas(codigo_jornada),
+    FOREIGN KEY (codigo_seccion) REFERENCES secciones(codigo_seccion),
+    FOREIGN KEY (codigo_aula) REFERENCES aulas(codigo_aula),
+    FOREIGN KEY (codigo_curso) REFERENCES cursos(codigo_curso),
+    FOREIGN KEY (codigo_maestro) REFERENCES maestros(codigo_maestro))
+    ENGINE=InnoDB CHARACTER SET = latin1;  
+
+INSERT INTO asignacioncursosmaestros
+(codigo_carrera, codigo_sede, codigo_jornada, codigo_seccion, codigo_aula, codigo_curso, codigo_maestro)
+VALUES 
+("09959","01011","10010","03001","02005","00022","01470"),("00805","01012","10013","03004","02002","00021","04644"),
+("09545","01013","10012","03002","02001","00025","01836");
