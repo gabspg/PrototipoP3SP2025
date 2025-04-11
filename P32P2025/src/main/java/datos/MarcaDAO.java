@@ -20,9 +20,9 @@ import java.util.List;
 public class MarcaDAO {
 
     private static final String SQL_SELECT = "SELECT idMarca, Nombre_marca, Descripcion_marca FROM marca";
-    private static final String SQL_INSERT = "INSERT INTO marca(idMarca, Nombre_marca, Descripcion_marca) VALUES(?, ?, ?)";
+    private static final String SQL_INSERT = "INSERT INTO marca(idMarca, Nombre_marca, Descripcion_marca) VALUES(?, ?, ?)";//insertar un registro
     private static final String SQL_UPDATE = "UPDATE marca SET Nombre_marca=?, Descripcion_marca=?  WHERE idMarca=?"; //comodines son los =?
-    private static final String SQL_DELETE = "DELETE FROM marca WHERE idMarca=?";
+    private static final String SQL_DELETE = "DELETE FROM marca WHERE idMarca=?"; //para eliminar un registro
     private static final String SQL_QUERY = "SELECT idMarca, Nombre_marca, Descripcion_marca WHERE idMarca = ?";
 
     public List<Marca> select() { //primer mantenimiento, va a consultar
