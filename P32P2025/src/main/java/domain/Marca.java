@@ -19,13 +19,14 @@ String descripcion_marca;
     public String toString() {
         return "Marca{" + "idMarca=" + idMarca + ", nombre_marca=" + nombre_marca + ", descripcion_marca=" + descripcion_marca + '}';
     }
-
+// Constructor de la clase Marca que permite inicializar un objeto con valores específicos
     public Marca(String idMarca, String nombre_marca, String descripcion_marca) {
         this.idMarca = idMarca;
         this.nombre_marca = nombre_marca;
         this.descripcion_marca = descripcion_marca;
     }
 
+   
     public String getIdMarca() {
         return idMarca;
     }
