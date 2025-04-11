@@ -156,10 +156,10 @@ public class MarcaDAO {
                 String Nombre_marca = rs.getString("Nombre_marca");
                 String Descripcion_marca = rs.getString("Descripcion_marca");
                 
-                marca = new Marca();
-                marca.setIdMarca(idMarca);
-                marca.setNombre_marca(Nombre_marca);
-                marca.setDescripcion_marca(Descripcion_marca);
+                marca = new Marca();// Se crea una nueva instancia del objeto Marca. Esto inicializa un nuevo objeto de la clase Marca.
+                marca.setIdMarca(idMarca);// Se establece el valor del atributo 'idMarca' 
+                marca.setNombre_marca(Nombre_marca);// Se establece el valor del atributo 'Nombre_marca'
+                marca.setDescripcion_marca(Descripcion_marca);// Se establece el valor del atributo 'Descripcion_marca'
 
                 //con los set, enviamos los objetos
                 //vendedores.add(vendedor); // Si se utiliza un ArrayList
