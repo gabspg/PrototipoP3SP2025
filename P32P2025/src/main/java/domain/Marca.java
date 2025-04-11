@@ -27,6 +27,7 @@ String descripcion_marca;
     }
 
    
+    // Método getter que devuelve el valor del atributo 'idMarca'
     public String getIdMarca() {
         return idMarca;
     }
