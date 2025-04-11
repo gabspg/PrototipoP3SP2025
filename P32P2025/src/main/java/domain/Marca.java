@@ -31,7 +31,7 @@ String descripcion_marca;
     public String getIdMarca() {
         return idMarca;
     }
-
+// Método setter que permite modificar valor del atributo 'idMarca'
     public void setIdMarca(String idMarca) {
         this.idMarca = idMarca;
     }
